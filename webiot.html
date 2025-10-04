@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto-fit Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: auto;   /* Width fits content */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 6px;  /* Small padding */
+            text-align: left;
+            white-space: nowrap; /* Prevents breaking into new lines */
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Code</th>
+        </tr>
+        <tr>
+            <td>1. Dc Potentiometer</td>
+            <td><a href="https://wokwi.com/projects/443857168484889601" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+            <td>2. Air humidity</td>
+            <td><a href="https://wokwi.com/projects/443858399041378305" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+            <td>3. Temperature-sensor</td>
+            <td><a href="https://wokwi.com/projects/443859337941712897" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+            <td>4. Distance</td>
+            <td><a href="https://wokwi.com/projects/443860508323629057" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+            <td>5. Smart-home</td>
+            <td><a href="https://wokwi.com/projects/443861201313969153" target="_blank">Link</a></td>
+        </tr>
+        <tr>
+            <td>Available networks</td>
+            <td>
+<pre>
+#include &lt;WiFi.h&gt;
+
+void setup() {
+  Serial.begin(115200);
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(100);
+}
+
+void loop() {
+  int n = WiFi.scanNetworks();
+  Serial.println("Available Networks:");
+  for (int i = 0; i &lt; n; i++) {
+    Serial.print(i + 1);
+    Serial.print(" ");
+    Serial.print(WiFi.SSID(i));
+    Serial.print(" Signal = ");
+    Serial.print(WiFi.RSSI(i));
+    Serial.println(" dBm");
+  }
+  delay(10000);
+}
+</pre>
+            </td>
+        </tr>
+        <tr>
+            <td>7. Finger sensor</td>
+            <td><a href="https://wokwi.com/projects/443862281002426369" target="_blank">Link</a></td>
+        </tr>
+    </table>
+
+</body>
+</html>
