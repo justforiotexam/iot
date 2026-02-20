@@ -1,88 +1,183 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Auto-fit Table</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: auto;   /* Width fits content */
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 6px;  /* Small padding */
-            text-align: left;
-            white-space: nowrap; /* Prevents breaking into new lines */
-        }
-        a {
-            text-decoration: none;
-            color: blue;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<title>R Programming Lab - All 12 Programs</title>
+
+<style>
+table{
+ width:100%;
+ border-collapse:collapse;
+}
+th,td{
+ border:1px solid black;
+ padding:10px;
+ vertical-align:top;
+}
+th{
+ background:#ddd;
+}
+pre{
+ white-space:pre-wrap;
+}
+</style>
 </head>
+
 <body>
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Code</th>
-        </tr>
-        <tr>
-            <td>1. Dc Potentiometer</td>
-            <td><a href="https://wokwi.com/projects/443857168484889601" target="_blank">Link</a></td>
-        </tr>
-        <tr>
-            <td>2. Air humidity</td>
-            <td><a href="https://wokwi.com/projects/443858399041378305" target="_blank">Link</a></td>
-        </tr>
-        <tr>
-            <td>3. Temperature-sensor</td>
-            <td><a href="https://wokwi.com/projects/443859337941712897" target="_blank">Link</a></td>
-        </tr>
-        <tr>
-            <td>4. Distance</td>
-            <td><a href="https://wokwi.com/projects/443860508323629057" target="_blank">Link</a></td>
-        </tr>
-        <tr>
-            <td>5. Smart-home</td>
-            <td><a href="https://wokwi.com/projects/443861201313969153" target="_blank">Link</a></td>
-        </tr>
-        <tr>
-            <td>Available networks</td>
-            <td>
-<pre>
-#include &lt;WiFi.h&gt;
+<h2 align="center">R Programming Lab – All 12 Programs</h2>
 
-void setup() {
-  Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
-  WiFi.disconnect();
-  delay(100);
+<table>
+
+<tr>
+<th>Title of Program</th>
+<th>Code</th>
+</tr>
+
+<tr>
+<td>1. Read Name & Age + R Version</td>
+<td><pre>
+name=readline("Name:")
+age=as.integer(readline("Age:"))
+print(name)
+print(age)
+print(R.version.string)
+</pre></td>
+</tr>
+
+<tr>
+<td>2. Sequence, Mean & Sum</td>
+<td><pre>
+seq1<-20:50
+print(seq1)
+
+m<-mean(20:60)
+print(m)
+
+s<-sum(51:91)
+print(s)
+</pre></td>
+</tr>
+
+<tr>
+<td>3. Armstrong Number</td>
+<td><pre>
+num<-as.integer(readline())
+d<-as.numeric(strsplit(as.character(num),"")[[1]])
+p<-length(d)
+s<-sum(d^p)
+
+if(s==num)
+ print("Armstrong")
+else
+ print("Not Armstrong")
+</pre></td>
+</tr>
+
+<tr>
+<td>4. Bar Plot</td>
+<td><pre>
+sub<-c("Maths","Physics","Chemistry","Biology","English")
+marks<-c(78,85,69,90,88)
+
+barplot(marks,names.arg=sub,col="blue")
+</pre></td>
+</tr>
+
+<tr>
+<td>5. List Operations</td>
+<td><pre>
+my_list<-list(a=10,b=20,c=30)
+my_list$d<-40
+my_list$b<-25
+my_list$c<-NULL
+print(my_list)
+</pre></td>
+</tr>
+
+<tr>
+<td>6. Sum of N Natural Numbers</td>
+<td><pre>
+n<-as.integer(readline())
+sum<-0
+
+for(i in 1:n){
+ sum<-sum+i
+}
+print(sum)
+</pre></td>
+</tr>
+
+<tr>
+<td>7. Multiply Two Vectors</td>
+<td><pre>
+v1<-c(2,4,6)
+v2<-c(3,5,7)
+print(v1*v2)
+</pre></td>
+</tr>
+
+<tr>
+<td>8. Matrix Addition & Subtraction</td>
+<td><pre>
+A<-matrix(1:9,nrow=3)
+B<-matrix(9:1,nrow=3)
+
+print(A+B)
+print(A-B)
+</pre></td>
+</tr>
+
+<tr>
+<td>9. Palindrome Using Function</td>
+<td><pre>
+pal<-function(n){
+ rev=0; temp=n
+ while(temp>0){
+  r=temp%%10
+  rev=rev*10+r
+  temp=temp%/%10
+ }
+ return(rev==n)
 }
 
-void loop() {
-  int n = WiFi.scanNetworks();
-  Serial.println("Available Networks:");
-  for (int i = 0; i &lt; n; i++) {
-    Serial.print(i + 1);
-    Serial.print(" ");
-    Serial.print(WiFi.SSID(i));
-    Serial.print(" Signal = ");
-    Serial.print(WiFi.RSSI(i));
-    Serial.println(" dBm");
-  }
-  delay(10000);
-}
-</pre>
-            </td>
-        </tr>
-        <tr>
-            <td>7. Finger sensor</td>
-            <td><a href="https://wokwi.com/projects/443862281002426369" target="_blank">Link</a></td>
-        </tr>
-    </table>
+num<-as.integer(readline())
+print(pal(num))
+</pre></td>
+</tr>
+
+<tr>
+<td>10. Data Frame</td>
+<td><pre>
+df<-data.frame(
+Name=c("Anu","Ravi","Sita"),
+Age=c(20,21,22)
+)
+
+print(df)
+print(df$Age[2])
+</pre></td>
+</tr>
+
+<tr>
+<td>11. Sum, Mean & Product of Vector</td>
+<td><pre>
+vec<-c(2,4,6,8)
+cat("Sum:",sum(vec))
+cat("Mean:",mean(vec))
+cat("Product:",prod(vec))
+</pre></td>
+</tr>
+
+<tr>
+<td>12. Sample from Population</td>
+<td><pre>
+pop<-1:100
+set.seed(123)
+sample(pop,10)
+</pre></td>
+</tr>
+
+</table>
 
 </body>
 </html>
