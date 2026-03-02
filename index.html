@@ -4,177 +4,222 @@
 <title>R Programming Lab - All 12 Programs</title>
 
 <style>
+body{
+ font-family: Arial, sans-serif;
+}
+
 table{
- width:100%;
+ width:85%;
+ margin:auto;
  border-collapse:collapse;
 }
+
 th,td{
- border:1px solid black;
- padding:10px;
+ border:1px solid #333;
+ padding:8px;
  vertical-align:top;
 }
+
 th{
  background:#ddd;
 }
-pre{
+
+.code-box{
+ background:#f4f4f4;
+ padding:10px;
+ border-radius:6px;
+ font-size:13px;
  white-space:pre-wrap;
 }
+
+h2{
+ text-align:center;
+}
 </style>
+
 </head>
 
 <body>
 
-<h2 align="center">R Programming Lab – All 12 Programs</h2>
+<h2>R Programming Lab – All 12 Programs</h2>
 
 <table>
 
 <tr>
-<th>Title of Program</th>
+<th width="30%">Title of Program</th>
 <th>Code</th>
 </tr>
 
 <tr>
 <td>1. Read Name & Age + R Version</td>
-<td><pre>
-name=readline("Name:")
-age=as.integer(readline("Age:"))
+<td><div class="code-box">
+name <- readline(prompt = "Enter your name: ")
+age <- as.integer(readline(prompt = "Enter your age: "))
+
 print(name)
 print(age)
 print(R.version.string)
-</pre></td>
+</div></td>
 </tr>
 
 <tr>
 <td>2. Sequence, Mean & Sum</td>
-<td><pre>
-seq1<-20:50
+<td><div class="code-box">
+seq1 <- 20:50
 print(seq1)
 
-m<-mean(20:60)
-print(m)
+mean_val <- mean(20:60)
+print(mean_val)
 
-s<-sum(51:91)
-print(s)
-</pre></td>
+sum_val <- sum(51:91)
+print(sum_val)
+</div></td>
 </tr>
 
 <tr>
 <td>3. Armstrong Number</td>
-<td><pre>
-num<-as.integer(readline())
-d<-as.numeric(strsplit(as.character(num),"")[[1]])
-p<-length(d)
-s<-sum(d^p)
+<td><div class="code-box">
+num <- as.integer(readline(prompt="Enter number: "))
 
-if(s==num)
- print("Armstrong")
-else
- print("Not Armstrong")
-</pre></td>
+digits <- as.numeric(strsplit(as.character(num), "")[[1]])
+power <- length(digits)
+sum_val <- sum(digits^power)
+
+if (sum_val == num) {
+  print("Armstrong Number")
+} else {
+  print("Not Armstrong Number")
+}
+</div></td>
 </tr>
 
 <tr>
 <td>4. Bar Plot</td>
-<td><pre>
-sub<-c("Maths","Physics","Chemistry","Biology","English")
-marks<-c(78,85,69,90,88)
+<td><div class="code-box">
+subjects <- c("Maths","Physics","Chemistry","Biology","English")
+marks <- c(78,85,69,90,88)
 
-barplot(marks,names.arg=sub,col="blue")
-</pre></td>
+barplot(
+  marks,
+  names.arg = subjects,
+  col = "blue",
+  main = "Marks in Five Subjects",
+  xlab = "Subjects",
+  ylab = "Marks"
+)
+</div></td>
 </tr>
 
 <tr>
 <td>5. List Operations</td>
-<td><pre>
-my_list<-list(a=10,b=20,c=30)
-my_list$d<-40
-my_list$b<-25
-my_list$c<-NULL
+<td><div class="code-box">
+my_list <- list(a = 10, b = 20, c = 30)
+
+my_list$d <- 40
+my_list$b <- 25
+my_list$c <- NULL
+
 print(my_list)
-</pre></td>
+</div></td>
 </tr>
 
 <tr>
 <td>6. Sum of N Natural Numbers</td>
-<td><pre>
-n<-as.integer(readline())
-sum<-0
+<td><div class="code-box">
+n <- as.integer(readline(prompt="Enter number: "))
+sum_val <- 0
 
-for(i in 1:n){
- sum<-sum+i
+for (i in 1:n) {
+  sum_val <- sum_val + i
 }
-print(sum)
-</pre></td>
+
+print(sum_val)
+</div></td>
 </tr>
 
 <tr>
 <td>7. Multiply Two Vectors</td>
-<td><pre>
-v1<-c(2,4,6)
-v2<-c(3,5,7)
-print(v1*v2)
-</pre></td>
+<td><div class="code-box">
+v1 <- c(2,4,6)
+v2 <- c(3,5,7)
+
+result <- v1 * v2
+print(result)
+</div></td>
 </tr>
 
 <tr>
 <td>8. Matrix Addition & Subtraction</td>
-<td><pre>
-A<-matrix(1:9,nrow=3)
-B<-matrix(9:1,nrow=3)
+<td><div class="code-box">
+A <- matrix(c(1,2,3,4,5,6,7,8,9), nrow=3, byrow=TRUE)
+B <- matrix(c(9,8,7,6,5,4,3,2,1), nrow=3, byrow=TRUE)
 
-print(A+B)
-print(A-B)
-</pre></td>
+print(A + B)
+print(A - B)
+</div></td>
 </tr>
 
 <tr>
 <td>9. Palindrome Using Function</td>
-<td><pre>
-pal<-function(n){
- rev=0; temp=n
- while(temp>0){
-  r=temp%%10
-  rev=rev*10+r
-  temp=temp%/%10
- }
- return(rev==n)
+<td><div class="code-box">
+palindrome <- function(n) {
+  rev <- 0
+  temp <- n
+  
+  while (temp > 0) {
+    r <- temp %% 10
+    rev <- rev * 10 + r
+    temp <- temp %/% 10
+  }
+  
+  return(rev == n)
 }
 
-num<-as.integer(readline())
-print(pal(num))
-</pre></td>
+num <- as.integer(readline(prompt="Enter number: "))
+
+if (palindrome(num)) {
+  print("Palindrome Number")
+} else {
+  print("Not a Palindrome Number")
+}
+</div></td>
 </tr>
 
 <tr>
 <td>10. Data Frame</td>
-<td><pre>
-df<-data.frame(
-Name=c("Anu","Ravi","Sita"),
-Age=c(20,21,22)
+<td><div class="code-box">
+df <- data.frame(
+  Name = c("Anu","Ravi","Sita"),
+  Age = c(20,21,22)
 )
 
 print(df)
 print(df$Age[2])
-</pre></td>
+</div></td>
 </tr>
 
 <tr>
 <td>11. Sum, Mean & Product of Vector</td>
-<td><pre>
-vec<-c(2,4,6,8)
-cat("Sum:",sum(vec))
-cat("Mean:",mean(vec))
-cat("Product:",prod(vec))
-</pre></td>
+<td><div class="code-box">
+vec <- c(2,4,6,8)
+
+cat("Sum:", sum(vec), "\n")
+cat("Mean:", mean(vec), "\n")
+cat("Product:", prod(vec), "\n")
+</div></td>
 </tr>
 
 <tr>
 <td>12. Sample from Population</td>
-<td><pre>
-pop<-1:100
+<td><div class="code-box">
+population <- 1:100
+
 set.seed(123)
-sample(pop,10)
-</pre></td>
+
+sample_data <- sample(population, size=10, replace=FALSE)
+
+print(sample_data)
+</div></td>
 </tr>
 
 </table>
